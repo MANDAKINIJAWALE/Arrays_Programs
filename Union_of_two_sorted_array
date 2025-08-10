@@ -1,0 +1,78 @@
+class Solution {
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+        // code here
+      ArrayList<Integer> list=new ArrayList<>();
+      
+      int n1=a.length,n2=b.length;
+      
+      int i=0,j=0;
+      
+         while(i<n1 && j<n2)
+         {
+             //preventing duplicates by 1st array
+             
+             if(i>0 && a[i]==a[i-1])
+             {
+                 i++;
+                 continue;
+             }
+               //preventing duplicates by 2nd array
+             if(j>0 && b[j]==b[j-1])
+             {
+                 j++;
+                 continue;
+             }
+             
+               // select and add the smaller element and move
+             if(a[i]<b[j])
+             {
+                 list.add(a[i]);
+                 i++;
+             }
+             // select and add the smaller element and move
+             else if(a[i]>b[j])
+             {
+                 list.add(b[j]);
+                 j++;
+             }
+             //If equal, then add to result and move both 
+             else
+             {
+                 list.add(a[i]);
+                 i++;j++;
+             }
+             
+             
+         }
+        
+        while(i<n1)
+        {
+             
+             if(i>0 && a[i]==a[i-1])
+             {
+                 i++;
+                 continue;
+             }
+            list.add(a[i]);
+                 i++;
+            
+        }
+        while(j<n2)
+        { 
+             if(j>0 && b[j]==b[j-1])
+             {
+                 j++;
+                 continue;
+             }
+            
+            list.add(b[j]);
+                 j++;
+             
+        }
+        return list;
+    }
+}
+
+//	O(n1 + n2)
+// extra space 	O(1)
+// total space O(n1 + n2)
