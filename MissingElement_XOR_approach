@@ -1,0 +1,22 @@
+class Solution {
+    int missingNum(int arr[]) {
+        // code here
+        int sum1=0,sum2=0;
+       
+      
+        
+        for(int j=0;j<arr.length;j++)
+        {
+            sum2=sum2^arr[j];
+            sum1=sum1^(j+1);
+        }
+       
+       sum1= sum1^(arr.length+1);
+        
+        return sum1^sum2;
+        
+    }
+}
+
+//O(n)
+//O(1)
